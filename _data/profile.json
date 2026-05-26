@@ -1,0 +1,182 @@
+{
+  "theme_config": {
+    "mode": "dark",
+    "vanta_effect": "birds",
+    "vanta_magic": true,
+    "colors": {
+      "primary": "#0d1117",
+      "secondary": "#161b22",
+      "accent": "#00BFFF"
+    },
+    "music": {
+      "enabled": true,
+      "file": "/assets/music/interstellar.mp3",
+      "max_volume": 1.0
+    },
+    "use_logo_image": true,
+    "nav_bar_logo_url": "/assets/img/theprofile.png",
+    "custom_cursor": true
+  },
+
+  "available_for_work": true,
+  "blog_config": {
+    "enabled": true
+  },
+
+  "name": "Shaik Suheal",
+
+  "headline": "CSE Student passionate about Web Development and AI",
+
+  "email": "shaiksuheal62@gmail.com",
+
+  "profile_image_url": "/assets/img/logo.png",
+
+  "resume_url": "https://drive.google.com/file/d/1ufz7xxVj2LnPI5hjw03ukhvVnEseV84e/view?usp=sharing",
+
+  "bio": "I’m Suheal Shaik, a passionate CSE student with a strong interest in Web Development and Artificial Intelligence. I enjoy building innovative projects, participating in hackathons, and exploring new technologies. I’m always eager to learn, collaborate, and create impactful digital solutions.",
+
+  "social": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/shaik-creator",
+      "logo": "github",
+      "color": "181717"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://www.instagram.com/shaik_.suhail__/",
+      "logo": "instagram",
+      "color": "E4405F"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/suheal-shaik-76a93a2bb/",
+      "logo": "linkedin",
+      "color": "0A66C2"
+    }
+  ],
+
+  "experience": [
+    {
+      "role": "Microsoft GitHub Copilot Dev Days Workshop Participant",
+      "company": "Microsoft GitHub",
+      "company_url": "https://github.com",
+      "duration": "2026",
+      "description": [
+        "Gained hands-on experience with AI-powered development workflows and GitHub Copilot features."
+      ]
+    },
+    {
+      "role": "2nd Runner-Up",
+      "company": "24-Hour Hackathon Bower School of Entrepreneurship",
+      "company_url": "https://www.linkedin.com",
+      "duration": "2026",
+      "description": [
+        "Built an AI Copilot solution for Small & Medium Businesses (SMBs).",
+        "Focused on automation, AI-driven decision making, and operational efficiency for businesses."
+      ]
+    },
+    {
+      "role": "Hackathon Participant",
+      "company": "Gemini X Nuvia NextGen AI 2026 Hackathon",
+      "company_url": "https://www.linkedin.com",
+      "duration": "2026",
+      "description": [
+        "Selected for the second round in an AI-focused hackathon organized at St. Peters Engineering College.",
+        "Worked on intelligent automation solutions and rapid AI prototyping under time constraints."
+      ]
+    },
+    {
+      "role": "Top 20 Team",
+      "company": "24-Hour Hackathon NRI Institute of Technology",
+      "company_url": "https://www.nriit.edu.in",
+      "duration": "2026",
+      "description": [
+        "Secured a position among the Top 20 Teams out of 120+ teams with the NyayBot project.",
+        "Gained experience in rapid AI prototyping and vibe coding."
+      ]
+    },
+    {
+      "role": "Hackathon Participant",
+      "company": "24 Hours Hackathon at Amazon Office of Valkey",
+      "company_url": "https://aws.amazon.com/opensource/valkey/",
+      "duration": "2026",
+      "description": [
+        "Participated in a 24-hour innovation-focused hackathon at the Amazon Office of Valkey."
+      ]
+    }
+  ],
+
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": ["JavaScript", "HTML", "CSS", "SQL", "Python"],
+      "logos": ["javascript", "html5", "css3", "mysql", "python"]
+    },
+    {
+      "category": "Frontend Development",
+      "items": ["React.js", "Responsive Web Design"],
+      "logos": ["react", "css3"]
+    },
+    {
+      "category": "Generative AI",
+      "items": ["Prompt Engineering", "AI Agents", "GenAI Concepts"],
+      "logos": ["openai", "google", "huggingface"]
+    },
+    {
+      "category": "Tools & Platforms",
+      "items": ["GitHub", "VS Code", "Cursor", "Anti-Gravity", "Canva", "CapCut"],
+      "logos": ["github", "visualstudiocode", "cursor", "canva", "capcut"]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "B.Tech",
+      "institution": "NIAT X Aurora Deemed University",
+      "year": "2025 - 2029",
+      "description": [
+        "Computer Science Engineering student passionate about Web Development and Artificial Intelligence.",
+        "Actively involved in hackathons, AI projects, and innovation-focused technical events."
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "title": "NyayBot Multilingual Legal Document Simplifier",
+      "description": "Built an AI-powered platform to simplify complex legal documents into easy-to-understand summaries with multilingual translation support for 12 Indian regional languages.",
+      "image_url": "https://www.techmonitor.ai/wp-content/uploads/sites/29/2016/07/JSON.png",
+      "stack": ["React.js", "JavaScript", "AI APIs"],
+      "stack_colors": ["61DAFB", "F7DF1E", "412991"],
+      "stack_logos": ["react", "javascript", "openai"],
+      "code_url": "https://github.com/shaik-creator/legal-bot",
+      "live_url": "https://nyay-bot-one.vercel.app/"
+    },
+    {
+      "title": "SpendWise Personal Expense Tracker",
+      "description": "Developed a smart expense tracking application to help users manage monthly spending and financial needs efficiently with responsive UI and expense visualization features.",
+      "image_url": "https://www.techmonitor.ai/wp-content/uploads/sites/29/2016/07/JSON.png",
+      "stack": ["React", "Next.js", "Vercel"],
+      "stack_colors": ["61DAFB", "000000", "FFFFFF"],
+      "stack_logos": ["react", "nextdotjs", "vercel"],
+      "code_url": "https://github.com/shaik-creator/spentwise_expenses_tracker",
+      "live_url": "https://spendwise-nine-inky.vercel.app/"
+    }
+  ],
+
+  "recommendations": [
+    {
+      "text": "Suheal is a passionate and innovative developer who consistently demonstrates creativity in AI and web development projects.",
+      "name": "Hackathon Mentor",
+      "title": "Technical Mentor",
+      "linkedin_url": ""
+    },
+    {
+      "text": "A highly motivated student developer with strong enthusiasm for AI, hackathons, and modern frontend technologies.",
+      "name": "Team Collaborator",
+      "title": "Developer",
+      "linkedin_url": ""
+    }
+  ]
+}

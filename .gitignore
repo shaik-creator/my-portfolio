@@ -1,0 +1,12 @@
+_site/
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata
+.agent/
+.gemini/
+.claude/
+node_modules/
+*.gem
+*.lock
+adapters/
+.DS_Store

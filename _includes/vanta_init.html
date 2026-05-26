@@ -1,0 +1,31 @@
+<!-- 
+  TheProFile — Vanta Initialization
+  Handles the conditional loading of Vanta.js dependencies and
+  injects Liquid configuration tokens for the Vanta Controller.
+-->
+{% assign vantaDefault = site.data.profile.theme_config.vanta_effect | default: 'net' | downcase %}
+{% assign is_p5 = "cells,dots,halo,trunk" | split: "," contains vantaDefault %}
+
+<!-- Dependency: Three.js (Core) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<!-- Dependency: P5.js (Select Effects Only) -->
+{% if is_p5 %}
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+{% endif %}
+
+<!-- Dependency: Initial Vanta Effect Script -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.{{ vantaDefault }}.min.js"></script>
+
+<!-- Pass Liquid Configuration to the Vanta Controller -->
+<script>
+  window.THE_PROFILE_CONFIG = Object.assign(window.THE_PROFILE_CONFIG || {}, {
+    vantaEffect: '{{ vantaDefault }}',
+    accentColor: '{{ site.data.profile.theme_config.colors.accent | default: "#58a6ff" }}',
+    primaryColor: '{{ site.data.profile.theme_config.colors.primary | default: "#0d1117" }}',
+    lightBg: '#f0f4f8'
+  });
+</script>
+
+<!-- Main Vanta Controller Logic -->
+<script defer src="{{ '/assets/js/vanta-controller.js' | relative_url }}"></script>

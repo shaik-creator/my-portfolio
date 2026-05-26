@@ -1,0 +1,19 @@
+<!-- 
+  TheProFile — Audio Player Include
+  Sets up the audio element with Liquid configuration and handles
+  the inclusion of the audio controller script.
+-->
+{% assign music = site.data.profile.theme_config.music %}
+{% if music.enabled %}
+  <audio 
+    id="bg-music" 
+    loop 
+    preload="auto" 
+    data-max-volume="{{ music.max_volume | default: 0.3 }}"
+  >
+    <source src="{{ music.file | relative_url }}" type="audio/mpeg">
+  </audio>
+
+  <!-- Controller Logic -->
+  <script defer src="{{ '/assets/js/audio-controller.js' | relative_url }}"></script>
+{% endif %}

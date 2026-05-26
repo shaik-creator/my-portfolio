@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- 
+  TheProFile — Default Layout
+  This is the primary wrapper for the application. It handles the injection of
+  head metadata, navigation, content, and global interaction scripts.
+-->
+<html lang="en" data-theme="{{ site.data.profile.theme_config.mode | default: 'dark' }}" {% if site.data.profile.theme_config.custom_cursor %}class="custom-cursor-active"{% endif %}>
+  
+  {% include head.html %}
+  
+  <body>
+    <!-- Global Navigation -->
+    {% include nav.html %}
+
+    <main id="main-content">
+      {{ content }}
+    </main>
+
+    <!-- Global Footer -->
+    {% include footer.html %}
+
+    <!-- Custom Cursor Markup -->
+    {% if site.data.profile.theme_config.custom_cursor %}
+      <div class="cursor-dot"></div>
+      <div class="cursor-outline"></div>
+    {% endif %}
+
+    <!-- Initialization of Cinematic Effects -->
+    {% assign vanta = site.data.profile.theme_config.vanta_effect %}
+    {% if vanta and vanta != "" %}
+      {% include vanta_init.html %}
+    {% endif %}
+
+    <!-- Global Audio Component -->
+    {% include audio_player.html %}
+
+    <!-- Core Interactions & Animations (Deferred) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="{{ '/assets/js/theme-controller.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/smooth-scroll.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/gsap-animations.js' | relative_url }}"></script>
+    <script defer src="{{ '/assets/js/contact-scripts.js' | relative_url }}"></script>
+    {% if site.data.profile.theme_config.custom_cursor %}
+      <script src="{{ '/assets/js/cursor-controller.js' | relative_url }}" defer></script>
+    {% endif %}
+  </body>
+</html>

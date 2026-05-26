@@ -1,0 +1,29 @@
+title: TheProFile
+description: Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy.
+baseurl: "/theprofile"
+url: "https://srisatyalokesh.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: /blog/:title/
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude from build output
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - AGENTS.md
+  - CONTRIBUTING.md
+  - PROJECT_RULES.md
+  - SUPERPOWER-STYLE.md
+  - CLAUDE.md
+  - docs/
+  - skills/
+  - .agent/
+  - .gemini/
+  - adapters/
+  - node_modules/
+  - vendor/

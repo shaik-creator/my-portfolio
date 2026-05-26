@@ -1,0 +1,40 @@
+<!-- 
+  TheProFile — Education Section
+  A vertical timeline of academic achievements.
+  Data: site.data.profile.education
+-->
+<section id="education" class="education section-wrapper" aria-label="Education History">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div class="education__list">
+      {% for edu in site.data.profile.education %}
+        <article class="education__item">
+          <!-- Degree & Graduation Year Header -->
+          <div class="education__header">
+            <h3 class="education__degree">{{ edu.degree }}</h3>
+            <span class="education__year" aria-label="Graduation Year">{{ edu.year }}</span>
+          </div>
+
+          <!-- Academic Institution -->
+          <span class="education__institution">{{ edu.institution }}</span>
+          
+          <!-- Optional Honors or Details -->
+          {% if edu.description %}
+            {% if edu.description[0] %}
+              <ul class="experience__description-list" role="list">
+                {% for point in edu.description %}
+                  <li>{{ point }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p class="experience__description">{{ edu.description }}</p>
+            {% endif %}
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
