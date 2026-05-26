@@ -2,6 +2,7 @@ title: TheProFile
 description: Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy.
 baseurl: "/theprofile"
 url: "https://srisatyalokesh.github.io"
+theme: jekyll-theme-minimal
 
 # Build settings
 markdown: kramdown
