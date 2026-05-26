@@ -13,7 +13,7 @@ This plan focuses on building an 'Elite' Magic Button for Vanta background rando
 ### 1. The Magic Button (Hero Section)
 Implement the visual identity and refined logic for the background randomizer.
 
-#### [MODIFY] [main.scss](file:///d:/professional/code/SriSatyaLokesh/TheProFile/assets/css/main.scss)
+#### [MODIFY] [main.scss](file:///d:/professional/code/SriSatyaLokesh/TheProFile{{ site.baseurl }}/assets/css/main.scss)
 - Add styles for `.hero__cta--magic`:
   - Use a gradient border or a subtle glowing effect to distinguish it as "Magic".
   - Implement a "watercolor underline" effect using an animated pseudo-element that appears on load/interaction.
@@ -32,7 +32,7 @@ Fixing the email copy button and ensuring the section is fully functional.
 - Verify the `data-email` attribute and the text visibility.
 - Ensure the button isn't being cut off by `overflow: hidden` or positioned outside the viewport.
 
-#### [MODIFY] [gsap-animations.js](file:///d:/professional/code/SriSatyaLokesh/TheProFile/assets/js/gsap-animations.js)
+#### [MODIFY] [gsap-animations.js](file:///d:/professional/code/SriSatyaLokesh/TheProFile{{ site.baseurl }}/assets/js/gsap-animations.js)
 - Adjust the ScrollTrigger for the contact section to ensure animations fire early enough.
 - Add a fallback that sets `opacity: 1` if GSAP fails to load.
 

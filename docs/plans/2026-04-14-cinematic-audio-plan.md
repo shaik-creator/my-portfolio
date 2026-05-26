@@ -14,7 +14,7 @@ Adding the music settings to the central `profile.json`.
   ```json
   "music": {
     "enabled": true,
-    "file": "/assets/music/interstellar.mp3",
+    "file": "{{ site.baseurl }}/assets/music/interstellar.mp3",
     "max_volume": 0.3
   }
   ```

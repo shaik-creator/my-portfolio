@@ -149,7 +149,7 @@ This is the single source of truth. All sections, styles, and links are driven b
 | `projects` array | **Maximum 6 items.** Extras beyond index 5 are silently ignored by the Liquid `limit:6` filter. |
 | `theme_config.mode` | Must be `"dark"` or `"light"`. Defaults to `"dark"` if missing. |
 | `theme_config.vanta_effect` | Must be one of the 6 supported strings. Defaults to `"net"` if missing or invalid. |
-| `profile_image_url` | Can be an absolute external URL (HTTPS) OR a local path (e.g., `/assets/img/profile.jpg`). |
+| `profile_image_url` | Can be an absolute external URL (HTTPS) OR a local path (e.g., `{{ site.baseurl }}/assets/img/profile.jpg`). |
 | `social[].color` | Hex color code **without** the `#` prefix (Shields.io format). |
 | `stack_colors[]` | Must be the same length as `stack[]`. Parallel arrays. |
 

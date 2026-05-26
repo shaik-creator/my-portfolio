@@ -10,11 +10,11 @@
     },
     "music": {
       "enabled": true,
-      "file": "/assets/music/interstellar.mp3",
+      "file": "{{ site.baseurl }}/assets/music/interstellar.mp3",
       "max_volume": 1.0
     },
     "use_logo_image": true,
-    "nav_bar_logo_url": "/assets/img/theprofile.png",
+    "nav_bar_logo_url": "{{ site.baseurl }}/assets/img/theprofile.png",
     "custom_cursor": true
   },
 
@@ -29,7 +29,7 @@
 
   "email": "shaiksuheal62@gmail.com",
 
-  "profile_image_url": "/assets/img/logo.png",
+  "profile_image_url": "{{ site.baseurl }}/assets/img/logo.png",
 
   "resume_url": "https://drive.google.com/file/d/1ufz7xxVj2LnPI5hjw03ukhvVnEseV84e/view?usp=sharing",
 

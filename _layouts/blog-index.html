@@ -16,7 +16,7 @@ layout: default
           <a href="{{ featured_post.url | relative_url }}" class="blog-card__link">
             <div class="blog-card__content interactive-glow">
               <div class="blog-card__image-wrap">
-                <img src="{{ featured_post.image | relative_url | default: '/assets/placeholder-blog.png' }}" alt="{{ featured_post.title }}" class="blog-card__image" loading="lazy">
+                <img src="{{ featured_post.image | relative_url | default: '{{ site.baseurl }}/assets/placeholder-blog.png' }}" alt="{{ featured_post.title }}" class="blog-card__image" loading="lazy">
               </div>
               <div class="blog-card__meta">
                 <span class="badge badge--featured">Featured Insight</span>
@@ -47,7 +47,7 @@ layout: default
           <a href="{{ post.url | relative_url }}" class="blog-card__link">
             <div class="blog-card__content interactive-glow">
               <div class="blog-card__image-wrap">
-                <img src="{{ post.image | relative_url | default: '/assets/placeholder-blog.png' }}" alt="{{ post.title }}" class="blog-card__image" loading="lazy">
+                <img src="{{ post.image | relative_url | default: '{{ site.baseurl }}/assets/placeholder-blog.png' }}" alt="{{ post.title }}" class="blog-card__image" loading="lazy">
               </div>
               <div class="blog-card__meta">
                 <time datetime="{{ post.date | date_to_xmlschema }}" class="blog-card__date">

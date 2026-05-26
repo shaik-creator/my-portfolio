@@ -24,9 +24,9 @@ Control the high-fidelity aesthetics of your site.
 | `colors.secondary` | The color for cards and secondary panels. | Hex code (e.g., `#121216`) |
 | `colors.accent` | Highlights, buttons, and animations. | Hex code (e.g., `#C084FC`) |
 | `music.enabled` | Play cinematic background music on entry. | `true`, `false` |
-| `music.file` | Path to the audio file. | `./assets/music/interstellar.mp3` |
+| `music.file` | Path to the audio file. | `.{{ site.baseurl }}/assets/music/interstellar.mp3` |
 | `use_logo_image` | Toggle between text name and image logo in nav. | `true`, `false` |
-| `nav_bar_logo_url` | Path to your branded logo. | `./assets/img/theprofile.png` |
+| `nav_bar_logo_url` | Path to your branded logo. | `.{{ site.baseurl }}/assets/img/theprofile.png` |
 
 ---
 

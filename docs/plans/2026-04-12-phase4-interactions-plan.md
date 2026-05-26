@@ -26,7 +26,7 @@
 ### Task 4.2 — Link JS to `default.html`
 ```
 <files>  _layouts/default.html
-<action> Update `_layouts/default.html` to include `<script defer src="{{ '/assets/js/smooth-scroll.js' | prepend: site.baseurl }}"></script>` right before the `</body>` tag.
+<action> Update `_layouts/default.html` to include `<script defer src="{{ '{{ site.baseurl }}/assets/js/smooth-scroll.js' | prepend: site.baseurl }}"></script>` right before the `</body>` tag.
 <verify> bundle exec jekyll build && Select-String "smooth-scroll" _site/index.html
 <done>   Build succeeds and the script tag appears in the compiled `index.html`.
 ```
