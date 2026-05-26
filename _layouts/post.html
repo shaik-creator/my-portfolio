@@ -51,7 +51,7 @@ layout: default
               <a href="{{ post.url | relative_url }}" class="blog-card__link">
                 <div class="blog-card__content interactive-glow">
                   <div class="blog-card__image-wrap">
-                    <img src="{{ post.image | relative_url | default: '{{ site.baseurl }}/assets/placeholder-blog.png' }}" alt="{{ post.title }}" class="blog-card__image" loading="lazy">
+                    <img src="{{ post.image | relative_url | default: '{{ site.baseurl }}{{ site.baseurl }}/assets/placeholder-blog.png' }}" alt="{{ post.title }}" class="blog-card__image" loading="lazy">
                   </div>
                   <h4 class="blog-card__title">{{ post.title }}</h4>
                 </div>

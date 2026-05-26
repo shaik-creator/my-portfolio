@@ -3,7 +3,7 @@ layout: post
 title: "TheProFile: The Portfolio-as-Code Revolution"
 date: 2026-04-13 08:00:00 +0530
 description: "Why I built a template that treats your professional identity like a high-performance system."
-image: ".{{ site.baseurl }}/assets/img/theprofile.png"
+image: ".{{ site.baseurl }}{{ site.baseurl }}/assets/img/theprofile.png"
 featured: true
 ---
 

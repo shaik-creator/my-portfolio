@@ -5,7 +5,7 @@ description: "A comprehensive deep-dive into the TheProFile engine. Learn how to
 date: 2026-04-15 00:00:00 +0530
 categories: [Guide, Documentation]
 tags: [Jekyll, JSON, UI/UX, Vanta, Tutorial]
-image: "{{ site.baseurl }}/assets/img/theprofile.png"
+image: "{{ site.baseurl }}{{ site.baseurl }}/assets/img/theprofile.png"
 ---
 
 # Introduction: The Era of Software-Driven Identity
@@ -37,13 +37,13 @@ The `colors` object defines the trio that permeates the site.
 ### Cinematic Audio
 Enable a tiered volume ramp that breathes life into your site on entry.
 - **`enabled`**: Toggle audio on/off.
-- **`file`**: Path to your audio asset (e.g., `.{{ site.baseurl }}/assets/music/interstellar.mp3`).
+- **`file`**: Path to your audio asset (e.g., `.{{ site.baseurl }}{{ site.baseurl }}/assets/music/interstellar.mp3`).
 - **`max_volume`**: The peak volume (0.0 to 1.0).
 
 ```json
 "music": {
   "enabled": true,
-  "file": ".{{ site.baseurl }}/assets/music/interstellar.mp3",
+  "file": ".{{ site.baseurl }}{{ site.baseurl }}/assets/music/interstellar.mp3",
   "max_volume": 1.0
 }
 ```
@@ -145,7 +145,7 @@ The `projects` array is the highlight of your craftsmanship. **Note**: The templ
 {
   "title": "TheProFile",
   "description": "A high-fidelity Portfolio-as-Code template for developers...",
-  "image_url": ".{{ site.baseurl }}/assets/img/theprofile.png",
+  "image_url": ".{{ site.baseurl }}{{ site.baseurl }}/assets/img/theprofile.png",
   "stack": ["Jekyll", "SCSS", "GSAP"],
   "stack_colors": ["CC0000", "1572B6", "88CE02"],
   "stack_logos": ["jekyll", "css3", "greensock"],

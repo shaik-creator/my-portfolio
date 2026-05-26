@@ -32,7 +32,7 @@
          - `.hero` itself: `background-color: transparent;` so Vanta's canvas shows (fallback applied on `body`).
          - `.hero__content`: `position: relative; z-index: 10;` so it sits above the Vanta `<canvas>`.
          - Verify glassmorphism in nav has correct fallbacks (rgb conversion is tricky in pure CSS vars unless defined as rgb, so we'll ensure we use standard `var(--color-secondary)` with `opacity` or hex fallback).
-<verify> bundle exec jekyll build && grep -A 5 ".hero__content {" _site{{ site.baseurl }}/assets/css/main.css
+<verify> bundle exec jekyll build && grep -A 5 ".hero__content {" _site{{ site.baseurl }}{{ site.baseurl }}/assets/css/main.css
 <done>   `z-index: 10` (or similar >0) is applied to `.hero__content`.
 ```
 

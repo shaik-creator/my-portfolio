@@ -31,7 +31,7 @@ Restore the live site's styling by reverting the SASS architecture to the univer
 | :--- | :--- |
 | **Local Jekyll Build** | ✅ Pass |
 | **CSS Syntax Check** | ✅ Valid CSS produced (no raw `@use` in `_site/`) |
-| **Asset Pathing** | ✅ `{{ site.baseurl }}/assets/css/main.css` correctly generated |
+| **Asset Pathing** | ✅ `{{ site.baseurl }}{{ site.baseurl }}/assets/css/main.css` correctly generated |
 
 ---
 

@@ -90,8 +90,8 @@ TheProFile/
   },
   "name": "...",
   "headline": "...",
-  "profile_image_url": "...",   // HTTPS URL or {{ site.baseurl }}/assets/img/...
-  "resume_url": "{{ site.baseurl }}/assets/resume.pdf",  // ← ADDED BEYOND PRD SCOPE — hero CTA button
+  "profile_image_url": "...",   // HTTPS URL or {{ site.baseurl }}{{ site.baseurl }}/assets/img/...
+  "resume_url": "{{ site.baseurl }}{{ site.baseurl }}/assets/resume.pdf",  // ← ADDED BEYOND PRD SCOPE — hero CTA button
 
   "social": [{ "platform":"GitHub", "url":"...", "logo":"github", "color":"181717" }],
   // logo values: github, linkedin, twitter, devdotto, leetcode, + any Simple Icons slug
@@ -163,7 +163,7 @@ These features exist in the codebase but were **not** in the original PRD/TRD:
 
 - **P1** JSON-only UX: all configurable content in `profile.json`
 - **P2** No npm/Node/framework — CDN only for Vanta.js, Three.js, GSAP
-- **P3** Images: HTTPS URL or `{{ site.baseurl }}/assets/img/` local path
+- **P3** Images: HTTPS URL or `{{ site.baseurl }}{{ site.baseurl }}/assets/img/` local path
 - **P4** `limit:6` on projects — hard limit, not configurable
 - **P5** Jekyll-native only — no unapproved gems
 - **P6** No inline styles — use CSS Custom Properties (exception: dynamic JS-driven values)

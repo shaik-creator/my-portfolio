@@ -64,7 +64,7 @@
          - Google Fonts: Inter (300,400,500,600,700)
          - Inline <style> block injecting CSS variables from profile.json:
            --color-primary, --color-secondary, --color-accent
-         - <link rel="stylesheet" href="{{ "{{ site.baseurl }}/assets/css/main.css" | prepend: site.baseurl }}">
+         - <link rel="stylesheet" href="{{ "{{ site.baseurl }}{{ site.baseurl }}/assets/css/main.css" | prepend: site.baseurl }}">
 <verify> bundle exec jekyll build && grep -r "color-primary" _site/index.html
 <done>   Grep finds "--color-primary" in the built index.html <head>.
 ```
@@ -207,8 +207,8 @@
          8. nav { position: fixed; top:0; width:100%; z-index:1000;
                   background: rgba(22,27,34,0.6); backdrop-filter: blur(12px); }
          9. Responsive: @media (max-width: 768px) { .container { padding: 0 1rem; } }
-<verify> bundle exec jekyll build && test -f _site{{ site.baseurl }}/assets/css/main.css && echo "CSS compiled"
-<done>   _site{{ site.baseurl }}/assets/css/main.css exists and contains "color-primary".
+<verify> bundle exec jekyll build && test -f _site{{ site.baseurl }}{{ site.baseurl }}/assets/css/main.css && echo "CSS compiled"
+<done>   _site{{ site.baseurl }}{{ site.baseurl }}/assets/css/main.css exists and contains "color-primary".
 ```
 
 ---
