@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<!-- 
+  TheProFile — Default Layout
+  This is the primary wrapper for the application. It handles the injection of
+  head metadata, navigation, content, and global interaction scripts.
+-->
+<html lang="en" data-theme="dark" class="custom-cursor-active">
+  
+  <!-- 
+  TheProFile — Head Metadata
+  Handles SEO, Social Sharing (OG/Twitter), CSS variable injection, 
+  and FOUC prevention logic.
+-->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+<meta name="author" content="Shaik Suheal" />
+
+<!-- SEO & Social Sharing (Open Graph) -->
+<meta property="og:title" content="Shaik Suheal | Portfolio" />
+<meta property="og:description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://srisatyalokesh.github.io/theprofile/" />
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Shaik Suheal | Portfolio" />
+<meta name="twitter:description" content="Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy." />
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://srisatyalokesh.github.io/theprofile/" />
+
+<title>Shaik Suheal | Portfolio</title>
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png' | relative_url }}">
+<link rel="manifest" href="/assets/img/favicon/site.webmanifest' | relative_url }}">
+<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico' | relative_url }}">
+
+<!-- 
+  FOUC Prevention: 
+  Injects design tokens from _data/profile.json into CSS variables 
+  and sets the initial theme before the browser paints the page.
+-->
+<style>
+  :root {
+    --color-primary:   #0d1117;
+    --color-secondary: #161b22;
+    --color-accent:    #00BFFF;
+    
+    /* Derived Glassmorphic Tokens */
+    --color-accent-subtle: color-mix(in srgb, var(--color-accent) 15%, transparent);
+    --color-border-glamour: color-mix(in srgb, var(--color-accent) 25%, var(--color-border, #30363d));
+  }
+</style>
+
+<script>
+  (function() {
+    // Theme initialization to prevent white flash in dark mode
+    var saved = localStorage.getItem('theprofile-theme');
+    var jsonDefault = 'dark';
+    var theme = saved || jsonDefault;
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+<!-- Main Stylesheet (Orchestrated Modular SASS) -->
+<link rel="stylesheet" href="/assets/css/main.css' | relative_url }}" />
+
+  
+  <body>
+    <!-- Global Navigation -->
+    <!-- 
+  TheProFile — Navigation
+  A high-fidelity glassmorphism navbar with dynamic link generation,
+  theme toggling, and sound state management.
+-->
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <div class="container nav__inner">
+    
+    <!-- Branding / Logo -->
+    <a href="/theprofile/#hero" class="nav__brand" aria-label="Go to home">
+      
+        <img 
+          src="/theprofile/%7B%7B%20site.baseurl%20%7D%7D/assets/img/theprofile.png" 
+          alt="Shaik Suheal Logo" 
+          class="nav__logo-img"
+          loading="eager"
+        >
+      
+    </a>
+
+    <!-- Navigation Links -->
+    <ul class="nav__links" role="list" id="nav-links">
+      <div class="nav__indicator" aria-hidden="true"></div>
+      
+      <li><a href="/theprofile/#profile"         class="nav__link">About</a></li>
+      <li><a href="/theprofile/#experience"      class="nav__link">Experience</a></li>
+      <li><a href="/theprofile/#skills"          class="nav__link">Skills</a></li>
+      <li><a href="/theprofile/#projects"        class="nav__link">Projects</a></li>
+      <li><a href="/theprofile/#contact"         class="nav__link">Contact</a></li>
+      
+      <!-- Conditional Blog Link -->
+      
+        <li><a href="/theprofile/blog/" class="nav__link">Blog</a></li>
+      
+    </ul>
+
+    <!-- Action Buttons -->
+    <div class="nav__actions">
+      
+      <!-- Cinematic Sound Toggle (Vanta & Audio) -->
+      
+      <button
+        id="sound-toggle"
+        class="nav__sound-toggle"
+        onclick="window.toggleSound()"
+        aria-label="Toggle background music"
+        title="Toggle Sound"
+      >
+        <div class="wavelength" aria-hidden="true">
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+          <span class="wavelength__bar"></span>
+        </div>
+      </button>
+      
+
+      <!-- Dark/Light theme toggle -->
+      <button
+        id="theme-toggle"
+        class="nav__theme-toggle"
+        aria-label="Toggle dark/light mode"
+        title="Toggle theme"
+      >
+        <!-- Sun icon (Visible in Light Mode) -->
+        <svg class="icon icon--sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- Moon icon (Visible in Dark Mode) -->
+        <svg class="icon icon--moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        id="nav-toggle"
+        class="nav__hamburger"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+    <main id="main-content">
+      <!-- 
+  TheProFile — Single Page Application (SPA) Orchestrator
+  This file includes all homepage sections in their defined scroll order.
+-->
+
+<section id="hero" class="hero" aria-label="Hero">
+  <!-- Magical Shockwave Overlay -->
+  <div class="hero__magic-wave" id="vanta-shockwave"></div>
+  
+  <div class="container hero__content">
+    
+    <div id="vanta-trigger" class="hero__badge">
+      <span class="hero__dot" aria-hidden="true"></span>
+      Available for opportunities
+    </div>
+    
+    
+    <h1 class="hero__name">Shaik Suheal</h1>
+    
+    <p class="hero__headline" data-gsap="hero-headline">
+      CSE Student passionate about Web Development and AI<span class="typing-dots"></span>
+    </p>
+    <div class="hero__cta-group">
+      <a id="hero-resume-btn" href="https://drive.google.com/file/d/1ufz7xxVj2LnPI5hjw03ukhvVnEseV84e/view?usp=sharing" class="hero__cta hero__cta--primary" target="_blank" rel="noopener noreferrer">
+        View Resume
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+      <a id="hero-contact-btn" href="#contact" class="hero__cta hero__cta--secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Profile Section
+  Displays the developer's avatar and biography.
+  Data: site.data.profile.bio, site.data.profile.profile_image_url
+-->
+<section id="profile" class="profile section-wrapper" aria-label="About Me">
+  <div class="container profile__inner">
+    
+    <!-- Profile Avatar -->
+    <div class="profile__image-wrap">
+      <img
+        src="/theprofile/%7B%7B%20site.baseurl%20%7D%7D/assets/img/logo.png"
+        alt="Shaik Suheal"
+        class="profile__image"
+        width="280"
+        height="280"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Biography Content -->
+    <div class="profile__content">
+      <h2 class="section-title">About Me</h2>
+      <p class="profile__bio">I’m Suheal Shaik, a passionate CSE student with a strong interest in Web Development and Artificial Intelligence. I enjoy building innovative projects, participating in hackathons, and exploring new technologies. I’m always eager to learn, collaborate, and create impactful digital solutions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Experience Section
+  A vertical timeline of professional work experience.
+  Data: site.data.profile.experience
+-->
+<section id="experience" class="experience section-wrapper" aria-label="Work Experience">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Experience</h2>
+    </div>
+
+    <div class="experience__list">
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">Microsoft GitHub Copilot Dev Days Workshop Participant</h3>
+            <span class="experience__duration" aria-label="Duration">2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <a href="https://github.com" class="experience__company" target="_blank" rel="noopener noreferrer">
+              Microsoft GitHub
+            </a>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Gained hands-on experience with AI-powered development workflows and GitHub Copilot features.</li>
+              
+            </ul>
+          
+        </article>
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">2nd Runner-Up</h3>
+            <span class="experience__duration" aria-label="Duration">2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <a href="https://www.linkedin.com" class="experience__company" target="_blank" rel="noopener noreferrer">
+              24-Hour Hackathon Bower School of Entrepreneurship
+            </a>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Built an AI Copilot solution for Small & Medium Businesses (SMBs).</li>
+              
+                <li>Focused on automation, AI-driven decision making, and operational efficiency for businesses.</li>
+              
+            </ul>
+          
+        </article>
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">Hackathon Participant</h3>
+            <span class="experience__duration" aria-label="Duration">2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <a href="https://www.linkedin.com" class="experience__company" target="_blank" rel="noopener noreferrer">
+              Gemini X Nuvia NextGen AI 2026 Hackathon
+            </a>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Selected for the second round in an AI-focused hackathon organized at St. Peters Engineering College.</li>
+              
+                <li>Worked on intelligent automation solutions and rapid AI prototyping under time constraints.</li>
+              
+            </ul>
+          
+        </article>
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">Top 20 Team</h3>
+            <span class="experience__duration" aria-label="Duration">2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <a href="https://www.nriit.edu.in" class="experience__company" target="_blank" rel="noopener noreferrer">
+              24-Hour Hackathon NRI Institute of Technology
+            </a>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Secured a position among the Top 20 Teams out of 120+ teams with the NyayBot project.</li>
+              
+                <li>Gained experience in rapid AI prototyping and vibe coding.</li>
+              
+            </ul>
+          
+        </article>
+      
+        <article class="experience__item">
+          <!-- Role & Duration Header -->
+          <div class="experience__header">
+            <h3 class="experience__role">Hackathon Participant</h3>
+            <span class="experience__duration" aria-label="Duration">2026</span>
+          </div>
+
+          <!-- Company Link/Text -->
+          
+            <a href="https://aws.amazon.com/opensource/valkey/" class="experience__company" target="_blank" rel="noopener noreferrer">
+              24 Hours Hackathon at Amazon Office of Valkey
+            </a>
+          
+          
+          <!-- Task Description (List or Paragraph) -->
+          
+            <ul class="experience__description-list" role="list">
+              
+                <li>Participated in a 24-hour innovation-focused hackathon at the Amazon Office of Valkey.</li>
+              
+            </ul>
+          
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Education Section
+  A vertical timeline of academic achievements.
+  Data: site.data.profile.education
+-->
+<section id="education" class="education section-wrapper" aria-label="Education History">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Education</h2>
+    </div>
+
+    <div class="education__list">
+      
+        <article class="education__item">
+          <!-- Degree & Graduation Year Header -->
+          <div class="education__header">
+            <h3 class="education__degree">B.Tech</h3>
+            <span class="education__year" aria-label="Graduation Year">2025 - 2029</span>
+          </div>
+
+          <!-- Academic Institution -->
+          <span class="education__institution">NIAT X Aurora Deemed University</span>
+          
+          <!-- Optional Honors or Details -->
+          
+            
+              <ul class="experience__description-list" role="list">
+                
+                  <li>Computer Science Engineering student passionate about Web Development and Artificial Intelligence.</li>
+                
+                  <li>Actively involved in hackathons, AI projects, and innovation-focused technical events.</li>
+                
+              </ul>
+            
+          
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Skills Section (Bento Grid)
+  A dynamic responsive grid that adjusts card spans based on category count.
+  Data: site.data.profile.skills
+-->
+<section id="skills" class="section-wrapper skills" aria-label="Technical Skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="skills-bento-grid">
+      
+      
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-8" role="region" aria-labelledby="skill-cat-1">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-1">Programming Languages</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="javascript" role="img" aria-label="Technology: JavaScript">
+  <img 
+    src="https://cdn.simpleicons.org/javascript" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">JavaScript</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="html" role="img" aria-label="Technology: HTML">
+  <img 
+    src="https://cdn.simpleicons.org/html5" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">HTML</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="css" role="img" aria-label="Technology: CSS">
+  <img 
+    src="https://cdn.simpleicons.org/css3" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">CSS</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="sql" role="img" aria-label="Technology: SQL">
+  <img 
+    src="https://cdn.simpleicons.org/mysql" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">SQL</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="python" role="img" aria-label="Technology: Python">
+  <img 
+    src="https://cdn.simpleicons.org/python" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Python</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-4" role="region" aria-labelledby="skill-cat-2">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-2">Frontend Development</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="react.js" role="img" aria-label="Technology: React.js">
+  <img 
+    src="https://cdn.simpleicons.org/react" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">React.js</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="responsive web design" role="img" aria-label="Technology: Responsive Web Design">
+  <img 
+    src="https://cdn.simpleicons.org/css3" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Responsive Web Design</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-4" role="region" aria-labelledby="skill-cat-3">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-3">Generative AI</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="prompt engineering" role="img" aria-label="Technology: Prompt Engineering">
+  <img 
+    src="https://cdn.simpleicons.org/openai" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Prompt Engineering</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="ai agents" role="img" aria-label="Technology: AI Agents">
+  <img 
+    src="https://cdn.simpleicons.org/google" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">AI Agents</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="genai concepts" role="img" aria-label="Technology: GenAI Concepts">
+  <img 
+    src="https://cdn.simpleicons.org/huggingface" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">GenAI Concepts</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+        
+        
+        <!-- Logic to determine card span based on total category count -->
+        
+        
+
+        <article class="skills-card skills-card--span-8" role="region" aria-labelledby="skill-cat-4">
+          <div class="skills-card__content">
+            <h3 class="skills-card__category" id="skill-cat-4">Tools & Platforms</h3>
+            <div class="skills-card__list">
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="github" role="img" aria-label="Technology: GitHub">
+  <img 
+    src="https://cdn.simpleicons.org/github" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">GitHub</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="vs code" role="img" aria-label="Technology: VS Code">
+  <img 
+    src="https://cdn.simpleicons.org/visualstudiocode" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">VS Code</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="cursor" role="img" aria-label="Technology: Cursor">
+  <img 
+    src="https://cdn.simpleicons.org/cursor" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Cursor</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="anti-gravity" role="img" aria-label="Technology: Anti-Gravity">
+  <img 
+    src="https://cdn.simpleicons.org/canva" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Anti-Gravity</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="canva" role="img" aria-label="Technology: Canva">
+  <img 
+    src="https://cdn.simpleicons.org/capcut" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Canva</span>
+</div>
+
+              
+                
+                
+                
+                <!-- Normalization for SimpleIcons slugs -->
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="capcut" role="img" aria-label="Technology: CapCut">
+  <img 
+    src="https://cdn.simpleicons.org/simpleicons" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">CapCut</span>
+</div>
+
+              
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Projects Section
+  A grid of featured projects with tech chips and external links.
+  Curated Limit: Always shows at most 6 projects (P4).
+  Data: site.data.profile.projects
+-->
+<section id="projects" class="projects section-wrapper" aria-label="Featured Projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+    </div>
+
+    <!-- Project Grid -->
+    <div class="project-grid">
+      
+        <article class="project-card" data-index="0">
+          
+          <!-- Project Thumbnail -->
+          
+            <div class="project-card__image-container">
+              <img
+                src="https://www.techmonitor.ai/wp-content/uploads/sites/29/2016/07/JSON.png"
+                alt="Screenshot of NyayBot Multilingual Legal Document Simplifier"
+                class="project-card__image"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">NyayBot Multilingual Legal Document Simplifier</h3>
+            <p class="project-card__description">Built an AI-powered platform to simplify complex legal documents into easy-to-understand summaries with multilingual translation support for 12 Indian regional languages.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="react.js" role="img" aria-label="Technology: React.js">
+  <img 
+    src="https://cdn.simpleicons.org/react" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">React.js</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="javascript" role="img" aria-label="Technology: JavaScript">
+  <img 
+    src="https://cdn.simpleicons.org/javascript" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">JavaScript</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="ai apis" role="img" aria-label="Technology: AI APIs">
+  <img 
+    src="https://cdn.simpleicons.org/openai" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">AI APIs</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+                <a href="https://github.com/shaik-creator/legal-bot" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-4.51-1.5-7-2"/></svg>
+                  <span class="sr-only">Source Code</span>
+                </a>
+              
+              
+              
+                <a href="https://nyay-bot-one.vercel.app/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">
+                  <span>Visit Site</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="project-card" data-index="1">
+          
+          <!-- Project Thumbnail -->
+          
+            <div class="project-card__image-container">
+              <img
+                src="https://www.techmonitor.ai/wp-content/uploads/sites/29/2016/07/JSON.png"
+                alt="Screenshot of SpendWise Personal Expense Tracker"
+                class="project-card__image"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+          
+
+          <div class="project-card__content">
+            <h3 class="project-card__title">SpendWise Personal Expense Tracker</h3>
+            <p class="project-card__description">Developed a smart expense tracking application to help users manage monthly spending and financial needs efficiently with responsive UI and expense visualization features.</p>
+
+            <!-- Technologies Used -->
+            <div class="project-card__stack" aria-label="Technologies used">
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="react" role="img" aria-label="Technology: React">
+  <img 
+    src="https://cdn.simpleicons.org/react" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">React</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="next.js" role="img" aria-label="Technology: Next.js">
+  <img 
+    src="https://cdn.simpleicons.org/nextdotjs" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Next.js</span>
+</div>
+
+              
+                
+                
+                <!-- 
+  tech_chip.html — Standardized Tech Chip Component
+  Displays a label with an associated SimpleIcon.
+  Usage: {% include tech_chip.html label="React" logo="react" %}
+-->
+
+
+<div class="tech-chip" data-tech="vercel" role="img" aria-label="Technology: Vercel">
+  <img 
+    src="https://cdn.simpleicons.org/vercel" 
+    alt="" 
+    class="tech-chip__icon" 
+    loading="lazy"
+    width="14"
+    height="14"
+    aria-hidden="true"
+    onerror="if(!this.getAttribute('data-tried-fallback')){this.setAttribute('data-tried-fallback','true');this.src='https://cdn.simpleicons.org/simpleicons';}"
+  >
+  <span class="tech-chip__label">Vercel</span>
+</div>
+
+              
+            </div>
+
+            <!-- Project Deep-links -->
+            <div class="project-card__links">
+              
+                <a href="https://github.com/shaik-creator/spentwise_expenses_tracker" class="project-link" target="_blank" rel="noopener noreferrer" title="View Source on GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-4.51-1.5-7-2"/></svg>
+                  <span class="sr-only">Source Code</span>
+                </a>
+              
+              
+              
+                <a href="https://spendwise-nine-inky.vercel.app/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">
+                  <span>Visit Site</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              
+            </div>
+          </div>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Recommendations Section
+  A grid of peer/manager testimonials.
+  Data: site.data.profile.recommendations
+-->
+<section id="recommendations" class="recommendations section-wrapper" aria-label="Peer Recommendations">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Recommendations</h2>
+    </div>
+
+    <!-- Recommendations Grid -->
+    <div class="recommendations__grid">
+      
+        <article class="rec-card" role="article">
+          
+          <!-- Testimonial Quote -->
+          <blockquote class="rec-card__quote">
+            <p>Suheal is a passionate and innovative developer who consistently demonstrates creativity in AI and web development projects.</p>
+          </blockquote>
+
+          <!-- Author attribution -->
+          <footer class="rec-card__footer">
+            <cite class="rec-card__name">Hackathon Mentor</cite>
+            
+            
+              <span class="rec-card__title">Technical Mentor</span>
+            
+            
+            
+          </footer>
+        </article>
+      
+        <article class="rec-card" role="article">
+          
+          <!-- Testimonial Quote -->
+          <blockquote class="rec-card__quote">
+            <p>A highly motivated student developer with strong enthusiasm for AI, hackathons, and modern frontend technologies.</p>
+          </blockquote>
+
+          <!-- Author attribution -->
+          <footer class="rec-card__footer">
+            <cite class="rec-card__name">Team Collaborator</cite>
+            
+            
+              <span class="rec-card__title">Developer</span>
+            
+            
+            
+          </footer>
+        </article>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 
+  TheProFile — Contact Section
+  Premium two-column layout for CTA and social profiles.
+  Data: site.data.profile.email, site.data.profile.social[]
+-->
+<section id="contact" class="contact section-wrapper" aria-label="Contact Information">
+  <div class="container">
+
+    <div class="contact__grid">
+
+      <!-- LEFT: Call to Action Column -->
+      <div class="contact__cta-col">
+        <div class="contact__eyebrow" role="status">
+          <span class="contact__dot" aria-hidden="true"></span>
+          Open to opportunities
+        </div>
+
+        <h2 class="section-title contact__title">
+          Let's Build<br>Something<br><span class="contact__title-accent">Great Together</span>
+        </h2>
+
+        <p class="contact__intro">
+          Whether it's a full-time role, a side project, or just a great conversation — my inbox is always open. I typically reply within 24 hours.
+        </p>
+
+        <!-- Copy Email Interaction (handled by assets/js/contact-scripts.js) -->
+        <div class="contact__email-block">
+          <span class="contact__email-label">Reach me directly</span>
+          <button
+            id="copy-email-btn"
+            class="contact__email-btn"
+            data-email="shaiksuheal62@gmail.com"
+            aria-label="Copy email address to clipboard"
+            title="Click to copy email"
+          >
+            <!-- Email Icon Wrapper (Matches social icon style) -->
+            <div class="contact__email-icon-wrapper" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+
+            <div class="contact__email-text-group">
+              <span class="contact__email-text">shaiksuheal62@gmail.com</span>
+              <span class="contact__email-subtext">Click to copy address</span>
+            </div>
+
+            <!-- Copy Icon (Matches social arrow style) -->
+            <svg class="contact__copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span class="contact__copy-feedback" aria-live="polite"></span>
+          </button>
+        </div>
+
+        <!-- Trust Indicator -->
+        <div class="contact__promise">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Avg. response time: &lt; 24 hours
+        </div>
+      </div>
+
+      <!-- RIGHT: Social Platform Cards -->
+      <div class="contact__social-col" role="list" aria-label="Social media profiles">
+        
+          
+            <article role="listitem">
+              <a
+                href="https://github.com/shaik-creator"
+                class="contact__social-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on GitHub"
+                aria-label="Visit my GitHub profile"
+              >
+                <!-- Platform Icon (Case-matched in Liquid) -->
+                <div class="contact__social-icon" aria-hidden="true">
+                  
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    
+                </div>
+
+                <div class="contact__social-info">
+                  <span class="contact__social-name">GitHub</span>
+                  <span class="contact__social-handle" aria-label="Username/Handle">github.com/shaik-creator</span>
+                </div>
+
+                <!-- External Arrow -->
+                <svg class="contact__social-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </a>
+            </article>
+          
+        
+          
+            <article role="listitem">
+              <a
+                href="https://www.instagram.com/shaik_.suhail__/"
+                class="contact__social-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on Instagram"
+                aria-label="Visit my Instagram profile"
+              >
+                <!-- Platform Icon (Case-matched in Liquid) -->
+                <div class="contact__social-icon" aria-hidden="true">
+                  
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  
+                </div>
+
+                <div class="contact__social-info">
+                  <span class="contact__social-name">Instagram</span>
+                  <span class="contact__social-handle" aria-label="Username/Handle">www.instagram.com/shaik_.suhail_</span>
+                </div>
+
+                <!-- External Arrow -->
+                <svg class="contact__social-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </a>
+            </article>
+          
+        
+          
+            <article role="listitem">
+              <a
+                href="https://www.linkedin.com/in/suheal-shaik-76a93a2bb/"
+                class="contact__social-card"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow on LinkedIn"
+                aria-label="Visit my LinkedIn profile"
+              >
+                <!-- Platform Icon (Case-matched in Liquid) -->
+                <div class="contact__social-icon" aria-hidden="true">
+                  
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062-0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    
+                </div>
+
+                <div class="contact__social-info">
+                  <span class="contact__social-name">LinkedIn</span>
+                  <span class="contact__social-handle" aria-label="Username/Handle">www.linkedin.com/in/suheal-shaik</span>
+                </div>
+
+                <!-- External Arrow -->
+                <svg class="contact__social-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                </svg>
+              </a>
+            </article>
+          
+        
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    </main>
+
+    <!-- Global Footer -->
+    <!-- 
+  TheProFile — Footer
+  Minimalist footer with dynamic copyright year and back-to-top navigation.
+-->
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <div class="footer__left">
+      <p class="footer__copy">
+        &copy; 2026 Shaik Suheal. All rights reserved.
+      </p>
+      <p class="footer__credit">
+        Built with <a href="https://github.com/SriSatyaLokesh/theprofile" target="_blank" rel="noopener">TheProFile</a>
+        — Portfolio-as-Code.
+      </p>
+    </div>
+
+    <!-- Back to Top Actions -->
+    <div class="footer__right">
+      <a href="#hero" class="footer__back-to-top" title="Back to Top" aria-label="Scroll back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- Custom Cursor Markup -->
+    
+      <div class="cursor-dot"></div>
+      <div class="cursor-outline"></div>
+    
+
+    <!-- Initialization of Cinematic Effects -->
+    
+    
+      <!-- 
+  TheProFile — Vanta Initialization
+  Handles the conditional loading of Vanta.js dependencies and
+  injects Liquid configuration tokens for the Vanta Controller.
+-->
+
+
+
+<!-- Dependency: Three.js (Core) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<!-- Dependency: P5.js (Select Effects Only) -->
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+
+<!-- Dependency: Initial Vanta Effect Script -->
+<script defer src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+
+<!-- Pass Liquid Configuration to the Vanta Controller -->
+<script>
+  window.THE_PROFILE_CONFIG = Object.assign(window.THE_PROFILE_CONFIG || {}, {
+    vantaEffect: 'birds',
+    accentColor: '#00BFFF',
+    primaryColor: '#0d1117',
+    lightBg: '#f0f4f8'
+  });
+</script>
+
+<!-- Main Vanta Controller Logic -->
+<script defer src="/assets/js/vanta-controller.js' | relative_url }}"></script>
+
+    
+
+    <!-- Global Audio Component -->
+    <!-- 
+  TheProFile — Audio Player Include
+  Sets up the audio element with Liquid configuration and handles
+  the inclusion of the audio controller script.
+-->
+
+
+  <audio 
+    id="bg-music" 
+    loop 
+    preload="auto" 
+    data-max-volume="1.0"
+  >
+    <source src="/theprofile/%7B%7B%20site.baseurl%20%7D%7D/assets/music/interstellar.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Controller Logic -->
+  <script defer src="/assets/js/audio-controller.js' | relative_url }}"></script>
+
+
+
+    <!-- Core Interactions & Animations (Deferred) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="/assets/js/theme-controller.js' | relative_url }}"></script>
+    <script defer src="/assets/js/smooth-scroll.js' | relative_url }}"></script>
+    <script defer src="/assets/js/gsap-animations.js' | relative_url }}"></script>
+    <script defer src="/assets/js/contact-scripts.js' | relative_url }}"></script>
+    
+      <script src="/assets/js/cursor-controller.js' | relative_url }}" defer></script>
+    
+  </body>
+</html>
