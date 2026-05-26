@@ -244,7 +244,7 @@ These must be done manually after code changes:
 
 ### Task 6.3 — Update _config.yml url
 ```
-<Action> url: "https://srisatyalokesh.github.io" → "https://srisatyalokesh.github.io/theprofile"
+<Action> url: "https://srisatyalokesh.github.io" → "https://shaik-creator.github.io/my-portfolio"
 <done> URL updated
 ```
 

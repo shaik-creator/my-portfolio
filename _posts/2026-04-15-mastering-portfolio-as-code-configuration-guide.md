@@ -150,7 +150,7 @@ The `projects` array is the highlight of your craftsmanship. **Note**: The templ
   "stack_colors": ["CC0000", "1572B6", "88CE02"],
   "stack_logos": ["jekyll", "css3", "greensock"],
   "code_url": "https://github.com/SriSatyaLokesh/theprofile",
-  "live_url": "https://srisatyalokesh.github.io/theprofile/"
+  "live_url": "https://shaik-creator.github.io/my-portfolio/"
 }
 ```
 

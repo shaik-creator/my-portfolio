@@ -1,17 +1,16 @@
 title: TheProFile
 description: Portfolio-as-Code — A Jekyll developer portfolio template. Fork, fill JSON, deploy.
+
 url: "https://shaik-creator.github.io"
 baseurl: "/my-portfolio"
-theme: jekyll-theme-minimal
 
-# Build settings
 markdown: kramdown
 permalink: /blog/:title/
+
 sass:
   sass_dir: _sass
   style: compressed
 
-# Exclude from build output
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -26,5 +25,3 @@ exclude:
   - .agent/
   - .gemini/
   - adapters/
-  - node_modules/
-  - vendor/
